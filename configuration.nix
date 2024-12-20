@@ -23,7 +23,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
@@ -96,20 +95,24 @@
 
   home-manager.users.james = {pkgs, ... }: {
     programs = {
-      zoxide = {
-      enable = true;
-      enableBashIntegration = true;
-      options = [
-      "--cmd z"
-      ];
-      };
-      neovim = {
-        enable = true;
-        vimAlias = true;
-        extraConfig = ''set number relativenumber'';
-	};
+
+          zoxide = {
+              enable = true;
+              enableBashIntegration = true;
+              options = [
+                  "--cmd z"
+              ];
+          };
+
+          neovim = {
+            enable = true;
+            vimAlias = true;
+            extraConfig = ''set number relativenumber'';
+        };
+
     };
     home.stateVersion = "24.11";
+    home.file.".config/nvi" = { source = ./nvim; };
 };
 
   environment.systemPackages = with pkgs; [
@@ -164,7 +167,7 @@
     bluetooth.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+#  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Don't touch this
   system.stateVersion = "23.05";

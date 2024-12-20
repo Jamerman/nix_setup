@@ -151,16 +151,16 @@ CTRL-A to select all | CTRL-x to deselect all
 ENTER to edit | DEL to delete
 CTRL-P to toggle preview'"
 
-# Needed for zoxide to work
-export PATH="$HOME/.local/bin:$PATH"
-eval "$(zoxide init bash)"
 # Means that zoxide runs ls after jumping directory
 cd() {
     z "$@" && ls;
 }
 cdi() {
-    zi "$@" && ls;
+    command zi "$@" && ls;
 }
 oldcd() {
     builtin cd "$@" && ls;
 }
+# Needed for zoxide to work
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(zoxide init bash)"

@@ -11,7 +11,7 @@
         };
 
         nixvim = {
-            ./modules/nvim/nixvim.nix;
+            path = ./modules/nvim;
 #                 url = "github:nix-community/nixvim/nixos-24.11";
 #                 inputs.nixpkgs.follows = "nixpkgs";
         };

@@ -1,31 +1,29 @@
+
+# root flake.nix
 {
-    description = "A flake from which the rest of the system is enabled.";
+  description = "A flake from which the rest of the system is enabled.";
 
-    inputs = {
-
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-
-        home-manager = {
-            url = "github:nix-community/home-manager/release-24.11";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        nixvim = {
-            url = "path:./modules/nvim/";
-#                 url = "github:nix-community/nixvim/nixos-24.11";
-#                 inputs.nixpkgs.follows = "nixpkgs";
-        };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: {
-        nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
-            specialArgs = {inherit inputs;};
-            system = "x86_64-linux";
-            modules = [
-                ./configuration.nix
-                home-manager.nixosModules.home-manager
-        		nixvim.nixosModules.nixvim
-            ];
-        };
+    nixvim = {
+      url = "path:./modules/nvim";  # Should resolve to ./modules/nvim/flake.nix
     };
+  };
+
+  outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: {
+    nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      system = "x86_64-linux";
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        nixvim.nixosModules.nixvim  # This should now correctly point to nixvim
+      ];
+    };
+  };
 }

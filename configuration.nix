@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/nvix.nix
+    ./modules/nvim/nvim.nix
   ];
 
   boot.loader.grub.enable = true;

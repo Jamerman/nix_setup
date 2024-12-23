@@ -6,23 +6,26 @@
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
         home-manager = {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/release-24.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        nixvim = {
-                url = "github:nix-community/nixvim/nixos-24.11";
-                inputs.nixpkgs.follows = "nixpkgs";
-        };
+#         nixvim = {
+#                 url = "github:nix-community/nixvim/nixos-24.11";
+#                 inputs.nixpkgs.follows = "nixpkgs";
+#         };
     };
 
-    outputs = { self, nixpkgs, nixvim, ... }@inputs: {
+    outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+#     outputs = { self, nixpkgs, nixvim, ... }@inputs: {
         nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             system = "x86_64-linux";
             modules = [
                 ./configuration.nix
-        		nixvim.nixosModules.nixvim
+                home-manager.nixosModules.home-manager
+                ./modules/nvim/nixvim.nix
+#        		nixvim.nixosModules.nixvim
             ];
         };
     };

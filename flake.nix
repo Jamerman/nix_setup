@@ -1,5 +1,5 @@
 {
-    description = "A simple NixOS flake";
+    description = "A flake from which the rest of the system is enabled.";
 
     inputs = {
 
@@ -22,7 +22,7 @@
             system = "x86_64-linux";
             modules = [
                 ./configuration.nix
-		nixvim.nixosModules.nixvim
+        		nixvim.nixosModules.nixvim
             ];
         };
     };

@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/nvix.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -136,7 +137,7 @@
   programs = {
     thunar.enable = true;
     dconf.enable = true;
-    nixvim.enable = true;
+    # nixvim.enable = true;
   };
 
   security = {

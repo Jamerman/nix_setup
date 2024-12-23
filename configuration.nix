@@ -138,7 +138,7 @@
   programs = {
     thunar.enable = true;
     dconf.enable = true;
-    nixvim.enable = true;
+    # nixvim.enable = true;
   };
 
   security = {

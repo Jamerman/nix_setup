@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    nixvim.nixosModules.nixvim
   ];
 
   boot.loader.grub.enable = true;
@@ -132,13 +133,12 @@
     vivaldi
     unrar
     unzip
-
-#    inputs.nixvim.packages.${system}.default
   ];
 
   programs = {
     thunar.enable = true;
     dconf.enable = true;
+    nixvim.enable = true;
   };
 
   security = {

@@ -22,7 +22,7 @@
             system = "x86_64-linux";
             modules = [
                 ./configuration.nix
-                nixvim.nixosModules.nixvim
+                # nixvim.nixosModules.nixvim
                 home-manager.nixosModules.home-manager
             ];
         };

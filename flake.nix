@@ -11,19 +11,19 @@
         };
 
         nixvim = {
-                url = "github:nix-community/nixvim";
+                url = "github:nix-community/nixvim/nixos-24.11";
                 inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
     outputs = { self, nixpkgs, ... }@inputs: {
-        # Please replace my-nixos with your hostname
         nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
+            specialArgs = {inherit inputs;};
             system = "x86_64-linux";
             modules = [
-                # Import the previous configuration.nix we used,
-                # so the old configuration file still takes effect
                 ./configuration.nix
+                nixvim.nixosModules.nixvim
+                home-manager.nixosModules.home-manager
             ];
         };
     };

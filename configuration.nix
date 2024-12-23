@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    nixvim.nixosModules.nixvim
+#    nixvim.nixosModules.nixvim
   ];
 
   boot.loader.grub.enable = true;

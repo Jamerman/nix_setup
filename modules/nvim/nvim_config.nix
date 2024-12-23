@@ -1,0 +1,8 @@
+{self, ...}:
+{
+    colorschemes.gruvbox.enable = true;
+    plugins = {
+        bufferline.enable = true;
+        web-devicons.enable = true;
+    };
+}

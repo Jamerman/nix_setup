@@ -91,22 +91,21 @@
     extraGroups = [ "networkmanager" "wheel" "lp" "video" "audio" ];
   };
 
-#   home-manager.backupFileExtension = "backup";
-#   home-manager.users.james = {pkgs, ... }: {
-#     programs = {
-# 
-#           zoxide = {
-#               enable = true;
-#               enableBashIntegration = true;
-#               options = [
-#                   "--cmd z"
-#               ];
-#           };
-# 
-#     };
-#     home.stateVersion = "24.11";
-# #     home.file.".config/nvim" = { source = /home/james/nix_setup/nvim; };
-# };
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.james = {pkgs, ... }: {
+    programs = {
+
+          zoxide = {
+              enable = true;
+              enableBashIntegration = true;
+              options = [
+                  "--cmd z"
+              ];
+          };
+
+    };
+    home.stateVersion = "24.11";
+};
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -137,7 +136,7 @@
   programs = {
     thunar.enable = true;
     dconf.enable = true;
- nixvim.enable = true;
+    nixvim.enable = true;
   };
 
   security = {

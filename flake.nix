@@ -16,14 +16,13 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: {
+    outputs = { self, nixpkgs, nixvim, ... }@inputs: {
         nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             system = "x86_64-linux";
             modules = [
                 ./configuration.nix
-                nixvim.nixosModules.nixvim
-                home-manager.nixosModules.home-manager
+		nixvim.nixosModules.nixvim
             ];
         };
     };

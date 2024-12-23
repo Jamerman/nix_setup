@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixvim, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    nixvim.nixosModules.nixvim
   ];
 
   boot.loader.grub.enable = true;
@@ -138,7 +137,7 @@
   programs = {
     thunar.enable = true;
     dconf.enable = true;
-    nixvim.enable = true;
+ nixvim.enable = true;
   };
 
   security = {
@@ -168,6 +167,7 @@
   };
 
  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 
   # Don't touch this
   system.stateVersion = "23.05";

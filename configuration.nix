@@ -1,8 +1,8 @@
-{ config, pkgs, nixvim, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/nvim/nvim.nix
+#    ./modules/nvim/nixvim.nix
   ];
 
   boot.loader.grub.enable = true;

@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-#    ./modules/nvim/nixvim.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -137,7 +136,7 @@
   programs = {
     thunar.enable = true;
     dconf.enable = true;
-    # nixvim.enable = true;
+    nixvim.enable = true;
   };
 
   security = {

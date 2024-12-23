@@ -10,22 +10,21 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-#         nixvim = {
+        nixvim = {
+            ./modules/nvim/nixvim.nix
 #                 url = "github:nix-community/nixvim/nixos-24.11";
 #                 inputs.nixpkgs.follows = "nixpkgs";
-#         };
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-#     outputs = { self, nixpkgs, nixvim, ... }@inputs: {
+    outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs: {
         nixosConfigurations.NixLaptop = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             system = "x86_64-linux";
             modules = [
                 ./configuration.nix
                 home-manager.nixosModules.home-manager
-                ./modules/nvim/nixvim.nix
-#        		nixvim.nixosModules.nixvim
+        		nixvim.nixosModules.nixvim
             ];
         };
     };

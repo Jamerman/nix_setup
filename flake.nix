@@ -1,4 +1,3 @@
-
 # root flake.nix
 {
   description = "A flake from which the rest of the system is enabled.";
@@ -24,7 +23,8 @@
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
-        nixvim.nixosModules.nixvim  # This should now correctly point to nixvim
+        ./modules/nvim/nvim_config.nix
+        nixvim.nixosModules.nixvim
       ];
     };
   };
